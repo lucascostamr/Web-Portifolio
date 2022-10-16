@@ -1,11 +1,13 @@
 {% include "header.html" %}
 
 <section id="home-sec">
-    <img class="octagon-home-img" src="{{ url_for('static', filename='images/octagon-yellow.png') }}" alt="octagon-home-img">
+    <img class="octagon-home-img" src="{{ url_for('static', filename='images/octagon-yellow.png') }}"
+        alt="octagon-home-img">
     <div class="home-main-content">
         <div class="jumbotron-fluid j-home">
             <div class="container-fluid text-center">
-                <img class="profile-home-img" src="{{ url_for('static', filename='images/profile-img.jpg') }}" alt="profile-img">
+                <img class="profile-home-img" src="{{ url_for('static', filename='images/profile-img.jpg') }}"
+                    alt="profile-img">
                 <h1 class="home-title">Hi, I'm Lucas</h1>
                 <p class="home-title">and you're in my website</p>
                 <a class="btn btn-warning btn-lg" href="#">Get Started</a>
@@ -15,57 +17,82 @@
 </section>
 
 <section id="about-page-sec">
-    <img class="octagon-about-img" src="{{ url_for('static', filename='images/octagon-black.png') }}" alt="octagon-about-img">
+    <img class="octagon-about-img" src="{{ url_for('static', filename='images/octagon-black.png') }}"
+        alt="octagon-about-img">
+
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light">
-      <button class="navbar-toggler button-navbar-about" type="button" data-toggle="collapse" data-target="#navbar-about-page" aria-controls="navbar-about-page" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbar-about-page">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" href="#"><span class="navbar-item">Projects</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="#"><span class="navbar-item">Contact</span></a>
-          </li>
-        </ul>
-      </div>
+        <button class="navbar-toggler button-navbar-about" type="button" data-toggle="collapse"
+            data-target="#navbar-about-page" aria-controls="navbar-about-page" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbar-about-page">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#"><span class="navbar-item">Projects</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#"><span class="navbar-item">Contact</span></a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
-    
-    <div class="about-main-content">
-
-        <div class="container about-text">
-            <h3 style="color: azure">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pharetra est urna, in ullamcorper leo interdum eget. Pellentesque convallis in nisi sed vehicula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pharetra est urna, in ullamcorper leo interdum eget. Pellentesque convallis in nisi sed vehicula.</h3>
-        </div>
-        <div class="container skills-text text-center" style="color: azure; font-weight: bolder; font-size: 5rem;">
-            <h2>SKILLS</h2>
-            <p>
-                <button class="btn btn-dark" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="soft-skills hard-skills">SHOW</button>
-            </p>
-            <div class="row">
-                <div class="col col-6">
-                    <div class="collapse multi-collapse" id="soft-skills">
-                        <div class="card card-body">
-                            <h3 class="card-title">SOFT-SKILLS</h3>
-                            <ul>
-                                <li class="card-content">Great Communicator</li>
-                            </ul>                        
-                        </div>
+    <!-- Content -->
+    <div class="container about-container">
+        <h3 class="about-text">
+            I'm a Brazilian, who loves technology, music, games and I'm also a student of Information Systems who decided to be a Developer to offer more accessible technology to society.
+        </h3>
+    </div>
+    <div class="container skills-text">
+        <h2 class="skill-text-title">SKILLS</h2>
+        <p>
+            <button class="btn btn-dark" type="button" data-toggle="collapse" data-target=".multi-collapse"
+                aria-expanded="false" aria-controls="soft-skills hard-skills">SHOW</button>
+        </p>
+        <div class="row">
+            <div class="col col-6">
+                <div class="collapse multi-collapse" id="soft-skills">
+                    <div class="card card-body">
+                        <h3 class="card-title">SOFT-SKILLS</h3>
+                        <ul class="card-content">
+                            <li>Great Communicator</li>
+                            <li>Teamwork</li>
+                            <li>Work under pressure</li>
+                            <li>Learn fast</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col col-6">
-                    <div class="collapse multi-collapse" id="hard-skills">
-                        <div class="card card-body">
-                            <p> Integer pharetra est urna, in ullamcorper leo interdum eget. Pellentesque Integer pharetra est urna, in ullamcorper leo interdum eget. Pellentesque</p>
-                        </div>
+            </div>
+            <div class="col col-6">
+                <div class="collapse multi-collapse" id="hard-skills">
+                    <div class="card card-body">
+                        <h3 class="card-title">HARD-SKILLS</h3>
+                        <ul class="card-content">
+                            <span class="hardskill-topic">Languages:</span>
+                            <li>Java</li>
+                            <li>Python</li>
+                            <span class="hardskill-topic">Frameworks:</span>
+                            <li>Flask</li>
+                            <li>Bootstrap</li>
+                            <li>Selenium</li>
+                            <span class="hardskill-topic">Web:</span>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <span class="hardskill-topic">Interfaces:</span>
+                            <li>Tkinter</li>
+                            <span class="hardskill-topic">Data Bases:</span>
+                            <li>SQLite</li>
+                            <li>SQLAlchemy</li>
+                        </ul>
                     </div>
                 </div>
-            </div>  
+            </div>
         </div>
     </div>
 </section>
-  
+
 
 
 {% include "footer.html" %}
