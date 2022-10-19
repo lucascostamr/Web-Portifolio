@@ -132,7 +132,7 @@ body {
 
 /* abaout me */
 .about-container {
-    padding: 14.7rem 1.5rem;
+    padding: 15.3rem 1.5rem;
 }
 
 .about-text {
@@ -183,6 +183,7 @@ body {
     /* about me */
     .about-container {
         padding-top: 3rem;
+        padding-bottom: 13.6rem;
         text-align: center;
     }
 
@@ -203,4 +204,11 @@ body {
     .card-title {
         font-size: 1.15rem;
     }
+}
+
+/* PROJECTS */
+
+#projects-page-sec{
+    background-color: #181818;
+    position: relative;
 }
