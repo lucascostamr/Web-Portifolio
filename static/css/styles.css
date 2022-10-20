@@ -211,4 +211,19 @@ body {
 #projects-page-sec{
     background-color: #181818;
     position: relative;
+    z-index: 1;
+}
+
+/* Circle */
+.yellow-circle-img{
+    width: 55%;
+    position: absolute;
+    left: -34rem;
+    padding-top: 15rem;
+}
+.project-text-title{
+    text-align: center;
+    color: azure;
+    font-size: 3rem;
+    padding: 5rem 0 14rem;
 }
