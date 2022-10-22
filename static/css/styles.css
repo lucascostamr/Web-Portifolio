@@ -1,9 +1,11 @@
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
+    overflow-y: hidden;
 }
 
 /* HOME */
+
 .home-title {
     color: azure;
 }
@@ -15,7 +17,11 @@ body {
 }
 
 .home-main-content {
-    padding: 22.72rem 1.5rem;
+    padding: 22.72rem 3rem;
+}
+.home-content{
+    text-align: center;
+    padding-bottom: 1.5rem;
 }
 
 .profile-home-img {
@@ -69,20 +75,25 @@ body {
 }
 
 /* ABOUT PAGE */
-
 #about-page-sec {
     position: relative;
     background-color: #f0a500;
     z-index: 2;
+
+    /* Scrollbar */
+    height:1000px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar{
+    width: 0;
 }
 
 /* navbar */
 .navbar {
     padding: 2.5rem;
-}
-
-.button-navbar-about {
-    color: azure;
 }
 
 .navbar-item {
@@ -130,7 +141,7 @@ body {
     }
 }
 
-/* abaout me */
+/* about me */
 .about-container {
     padding: 15.3rem 1.5rem;
 }
@@ -143,7 +154,7 @@ body {
 
 /* Skills */
 .skills-text {
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
     text-align: center;
 }
 
@@ -208,22 +219,119 @@ body {
 
 /* PROJECTS */
 
+/* FIRST PAGE */
 #projects-page-sec{
     background-color: #181818;
     position: relative;
     z-index: 1;
 }
-
-/* Circle */
-.yellow-circle-img{
-    width: 55%;
-    position: absolute;
-    left: -34rem;
-    padding-top: 15rem;
-}
+/* Project Title */
 .project-text-title{
     text-align: center;
     color: azure;
     font-size: 3rem;
-    padding: 5rem 0 14rem;
+}
+.project-container{
+    padding: 4rem 0 2rem;
+}
+
+/* Show Projects */
+.show-project-container{
+    padding: 0.5 0 3.5rem;
+}
+
+/* Circle */
+.yellow-circle-img{
+    position: absolute;
+    left: -30rem;
+    bottom: 2rem;
+    z-index: -1;
+}
+
+@media (max-width: 449.9px) {
+    .yellow-circle-img {
+        width: 40rem;
+    }
+    .show-project-container{
+        padding: 5.75rem 2rem 18.5rem;
+    }
+}
+@media (min-width: 450px) {
+    .yellow-circle-img {
+        width: 40rem;
+    }
+    .show-project-container{
+
+        padding: 8.25rem 2rem 14.25rem;
+    }
+}
+
+@media (min-width: 550px) {
+    .yellow-circle-img {
+        width: 45rem;
+    }
+    .show-project-container{
+        padding: 5.25rem 2rem 14.25rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .yellow-circle-img {
+        width: 50rem;
+    }
+    .show-project-container{
+        padding: 2rem 0 4rem;
+    }
+}
+@media (min-width: 993px) {
+    .yellow-circle-img {
+        width: 55rem;
+    }
+    .show-project-container{
+        padding: 0 0 3.25rem;
+    }
+
+}
+
+@media (min-width: 1200px) {
+    .yellow-circle-img {
+        width: 65rem;
+    }
+
+}
+
+/* SECOND PAGE */
+#project-page{
+    background-color: #181818;
+    color: azure;
+    text-align: center;
+}
+.project-page-container{
+    padding: 10rem 0;
+
+}
+.project-image{
+    width: 50%;
+    border-radius: 20%;
+}
+.media-body{
+    text-align: left;
+    padding-left: 10rem;
+}
+
+/* CONTACT */
+
+#contact-page-sec{
+    background-color: #f0a500;
+}
+.main-contact{
+    text-align: center;
+    color: azure;
+}
+.contact-text-title{
+    padding: 4rem 0;
+    font-size: 3rem;
+}
+.contact-content{
+    padding: 19rem 1.5rem;
 }
