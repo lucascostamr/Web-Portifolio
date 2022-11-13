@@ -1,7 +1,7 @@
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
 }
 
 /* HOME */
@@ -27,6 +27,22 @@ body {
 .profile-home-img {
     width: 100px;
     border-radius: 50%;
+}
+
+.home-btn{
+    padding-top: 1rem;
+}
+.btn-lg {
+    font-size: 1.5rem;
+}
+.a-options{
+    width: 16rem;
+}
+.bar-btween{
+    color: #404258;
+    font-size: 2rem;
+    display: inline-block;
+    padding: 0.5rem;
 }
 
 /* octogon image */
@@ -306,17 +322,35 @@ body {
     color: azure;
     text-align: center;
 }
-.project-page-container{
+.project-page-title-container{
     padding: 10rem 0;
-
+}
+.project-page-container-content{
+    padding-bottom: 1.9rem;
+}
+.project-title{
+    font-size: 3rem;
+}
+.project-description{
+    font-size: 2rem;
+}
+.project-description-content{
+    font-size: 1.25rem;
 }
 .project-image{
     width: 50%;
     border-radius: 20%;
+    padding: 1rem;
 }
-.media-body{
+.container-text{
+    padding: 1rem 3rem 1rem 1rem;
     text-align: left;
-    padding-left: 10rem;
+    float: right;
+    width: 50%;
+}
+.source-btn{
+    display: inline-block;
+    padding-top: 3rem;
 }
 
 /* CONTACT */
