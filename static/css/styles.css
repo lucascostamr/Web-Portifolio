@@ -97,9 +97,9 @@ body {
     z-index: 2;
 
     /* Scrollbar */
-    height:1000px;
+    /* height:1000px;
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: hidden; */
 }
 
 /* Scrollbar */
@@ -235,7 +235,7 @@ body {
 
 /* PROJECTS */
 
-/* FIRST PAGE */
+/* HOME PAGE */
 #projects-page-sec{
     background-color: #181818;
     position: relative;
@@ -248,7 +248,7 @@ body {
     font-size: 3rem;
 }
 .project-container{
-    padding: 4rem 0 2rem;
+    padding: 3rem 0;
 }
 
 /* Show Projects */
@@ -269,7 +269,7 @@ body {
         width: 40rem;
     }
     .show-project-container{
-        padding: 5.75rem 2rem 18.5rem;
+        padding: 6.75rem 2rem 19.5rem;
     }
 }
 @media (min-width: 450px) {
@@ -316,37 +316,58 @@ body {
 
 }
 
-/* SECOND PAGE */
+/* SEPARETED PAGE */
+#body-project-page{
+    overflow-y: unset;
+}
 #project-page{
     background-color: #181818;
     color: azure;
-    text-align: center;
+    text-align: center;  
 }
+
 .project-page-title-container{
-    padding: 10rem 0;
+    padding: 8rem 1.5rem 0;
 }
 .project-page-container-content{
-    padding-bottom: 1.9rem;
+    padding: 6rem 2rem 0;
+    text-align: center;
+}
+.back-btn{
+    text-align: left;
+    padding: 3rem 3.5rem;
 }
 .project-title{
     font-size: 3rem;
 }
 .project-description{
-    font-size: 2rem;
+    font-size: 1.75rem;
 }
 .project-description-content{
     font-size: 1.25rem;
 }
 .project-image{
-    width: 50%;
-    border-radius: 20%;
-    padding: 1rem;
+    width: 80%;
+    border-radius: 10%;
 }
 .container-text{
-    padding: 1rem 3rem 1rem 1rem;
     text-align: left;
-    float: right;
-    width: 50%;
+    width: auto;
+    padding: 3rem 1.5rem;
+}
+@media(min-width: 1000px){
+    .container-text{
+        float: right;
+        width: 50%;
+        padding-left: 5rem;
+    }
+    .project-image{
+        width: 50%;
+    }
+    .back-btn{
+        padding-top: 6rem;
+        padding-bottom: 9.47rem;
+    }
 }
 .source-btn{
     display: inline-block;
@@ -364,8 +385,102 @@ body {
 }
 .contact-text-title{
     padding: 4rem 0;
-    font-size: 3rem;
+    font-size: 3.25rem;
 }
-.contact-content{
-    padding: 19rem 1.5rem;
+.contact-form{
+    padding: 6.95rem 1.5rem;
+    width: 50%;
+    text-align: left;
+}
+@media (max-width: 550px){
+    .contact-form{
+        text-align: center;
+    }
+}
+.contact-sent-email{
+    padding: 15rem 1.5rem;
+}
+.contact-icons{
+    width: 33px;
+    float: left;
+}
+.contact-container{
+    width: 30%;
+    display: inline-block;
+}
+.contact-repo-title{
+    color: #181818;
+}
+.github-icon{
+    display: inline-block;
+    position: relative;
+    left: 12rem;
+}
+@media(max-width: 599.9px){
+    .github-icon{
+        position: static;
+    }
+}
+
+@media(min-width: 600px){
+    .github-icon{
+        left: 0;
+    }
+}
+
+@media(min-width: 750px){
+    .github-icon{
+        left: 2rem;
+    }
+}
+
+@media(min-width: 900px){
+    .github-icon{
+        left: 4rem;
+    }
+}
+
+@media(min-width: 1150px){
+    .github-icon{
+        left: 9rem;
+    }
+}
+
+@media(min-width: 1400px){
+    .github-icon{
+        left: 12rem;
+    }
+}
+
+@media(min-width: 1580px){
+    .github-icon{
+        left: 15rem;
+    }
+}
+@media(min-width: 1630px){
+    .github-icon{
+        left: 16rem;
+    }
+}
+
+@media(min-width: 1750px){
+    .github-icon{
+        left: 18rem;
+    }
+}
+@media(min-width: 1880px){
+    .github-icon{
+        left: 20rem;
+    }
+}
+@media(min-width: 2000px){
+    .github-icon{
+        left: 23rem;
+    }
+}
+
+
+
+.contact-main-container{
+    padding-top: 8rem;
 }
