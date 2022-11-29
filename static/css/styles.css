@@ -5,7 +5,18 @@ body {
 }
 
 /* HOME */
-
+.status-sign{
+    display: inline-block;
+    position: absolute;
+    right: 50px;
+    width: 11%;
+}
+.logged-in-sign{
+    color: #3EC70B;
+}
+.logout-sign{
+    color: red;
+}
 .home-title {
     color: azure;
 }

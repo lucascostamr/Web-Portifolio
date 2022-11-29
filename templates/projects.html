@@ -1,17 +1,21 @@
 {%include "header.html" %}
 <body id="body-project-page">
 <section id="project-page" class="project-sec">
-    <div class="container project-page-title-container">
-        <h1 class="project-title">Projects Name</h1>
-    </div>
-    <div class="container project-page-container-content">
-        <img src="{{ url_for('static', filename='images/profile-img.jpg')}}" alt="project-image" class="project-image">
-        <div class="container-text">
-            <h3 class="project-description">Description</h3>
-            <p class="project-description-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut elit eu ex placerat facilisis. Vestibulum elit quamLorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut elit eu ex placerat facilisis. Vestibulum elit quam</p>
-            <span class="source-btn"><a class="btn btn-outline-info" href="#">Source Code</a></span>
+    {% for project in all_projects: %}
+        {% if project.id == index:%}
+        <div class="container project-page-title-container">
+            <h1 class="project-title">{{ project.title }}</h1>
         </div>
-    </div>
+        <div class="container project-page-container-content">
+            <img src="{{ project.image_url }}" alt="project-image" class="project-image">
+            <div class="container-text">
+                <h3 class="project-description">Description</h3>
+                <p class="project-description-content">{{ project.description }}</p>
+                <span class="source-btn"><a class="btn btn-outline-info" href="{{ project.source_code_url }}">Source Code</a></span>
+            </div>
+        </div>
+       {% endif %}
+    {% endfor %}
     <div class="container back-btn">
         <a class="btn btn-outline-danger"href="/#projects-page-sec">Back to Projects</a>
     </div>

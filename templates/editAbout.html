@@ -1,0 +1,12 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% include "header.html" %}
+<body>
+    <div class="container">
+        <h1>Edit About text:</h1>
+        {% for about in %}
+        {{ wtf.quick_form(form(text=about_text.text))}}
+        {{ ckeditor.load()| safe}}
+    </div>
+    
+</body>
+{% include "footer.html"%}

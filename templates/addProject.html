@@ -1,0 +1,19 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% include "header.html" %}
+<body>
+    {% if succefully_added:%}
+    <div class="container">
+        <h1> Succefully Added</h1>
+        <a class="btn btn-info" href="{{ url_for('add_project')}}"> Add another project</a><br>
+        <a class="btn btn-danger" href="{{ url_for('home')}}"> Back to the start</a>
+    </div>
+    {%else:%}
+    <div class="container">
+        <h1>ADD PROJECT</h1>
+        {{ wtf.quick_form(form) }}
+        <br>
+        <a class="btn btn-danger" href="{{ url_for('home')}}"> Back to the start</a>
+    </div>
+    {% endif %}
+</body>
+{% include "footer.html" %}

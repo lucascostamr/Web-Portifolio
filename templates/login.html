@@ -1,0 +1,13 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% include "header.html" %}
+
+<body>
+    <h1>Login Page</h1><br>
+    <div class="container">
+    {{wtf.quick_form(form)}}
+    </div>
+    
+</body>
+
+{% include "footer.html" %}
