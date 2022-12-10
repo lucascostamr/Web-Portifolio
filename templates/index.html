@@ -58,15 +58,12 @@
 
     <!-- Content -->
     <div class="container about-container">
-        <!-- I'm a Brazilian, who loves technology, music, games and I'm also a student of Information Systems who
-            decided to be a Developer to offer more accessible technology to society.
- -->
     {%for about in about_text: %}
         <h3 class="about-text">{{ about.text}}</h3>
     {%endfor%}
         <!-- EDIT BUTTON -->
         {% if current_user.id == 1:%}
-        <a class="btn btn-info" href="#">Edit</a>
+        <a class="btn btn-info" href="{{ url_for('edit_about') }}">Edit</a>
         {% endif %}
     </div>
     <div class="container skills-text">
@@ -81,12 +78,14 @@
                     <div class="card card-body">
                         <h3 class="card-title">SOFT-SKILLS</h3>
                         <ul class="card-content">
-                            <li>Great Communicator</li>
-                            <li>Teamwork</li>
-                            <li>Work under pressure</li>
-                            <li>Learn fast</li>
+                            {%for softskill in softskills:%}
+                            <li>{{softskill}}</li>
+                            {%endfor%}
                         </ul>
                     </div>
+                    {%if current_user.id == 1:%}
+                    <a class="btn btn-info" href="{{url_for('edit_skills')}}">Edit</a>
+                    {%endif%}
                 </div>
             </div>
             <div class="col col-6">
@@ -94,21 +93,12 @@
                     <div class="card card-body">
                         <h3 class="card-title">HARD-SKILLS</h3>
                         <ul class="card-content">
-                            <span class="hardskill-topic">Languages:</span>
-                            <li>Java</li>
-                            <li>Python</li>
-                            <span class="hardskill-topic">Frameworks:</span>
-                            <li>Flask</li>
-                            <li>Bootstrap</li>
-                            <li>Selenium</li>
-                            <span class="hardskill-topic">Web:</span>
-                            <li>HTML</li>
-                            <li>CSS</li>
-                            <span class="hardskill-topic">Interfaces:</span>
-                            <li>Tkinter</li>
-                            <span class="hardskill-topic">Data Bases:</span>
-                            <li>SQLite</li>
-                            <li>SQLAlchemy</li>
+                            {%for hardskill in hardskills:%}
+                                <span class="hardskill-topic">{{ hardskill.split(':')[0] }}</span>
+                                {%for skill in hardskill.split(':')[1].split(','):%}
+                                    <li>{{skill}}</li>
+                                {%endfor%}
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
@@ -151,15 +141,15 @@
                 {% for project in all_projects: %}
                     {% if project.id == 1:%}
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="{{ url_for('static', filename='images/teste.jpg') }}" alt="First">
+                        <img class="d-block w-100 project-homepage-img" src="{{ project.image_url }}" alt="Project Image">
                         <div class="carousel-caption d-md-block">
-                            <a class="link-item" href="{{ url_for('projects', id=project.id) }}">{{ project.title }}</a>
-                            <p>{{ project.sub_description }}</p>
+                            <a class="link-item text-project-homepage" href="{{ url_for('projects', id=project.id) }}">{{ project.title }}</a>
+                            <br><p class="subdescription-project-homepage">{{ project.sub_description }}</p>
                         </div>
                     </div>
                     {% else: %}
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="{{ url_for('static', filename='images/teste.jpg') }}" alt="First">
+                        <img class="d-block w-100" src="{{ project.image_url }}" alt="First">
                         <div class="carousel-caption d-md-block">
                             <a class="link-item" href="{{ url_for('projects', id=project.id) }}">{{ project.title }}</a>
                             <p>{{ project.sub_description }}</p>
@@ -185,6 +175,11 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
+        {% if current_user.id == 1:%}
+        <div class="container">
+            <a class="btn btn-info" href="{{ url_for('add_project', edit='0') }}">Add New</a>
+        </div>
+        {% endif %}
     </div>
 </section>
 

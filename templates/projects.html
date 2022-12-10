@@ -14,12 +14,19 @@
                 <span class="source-btn"><a class="btn btn-outline-info" href="{{ project.source_code_url }}">Source Code</a></span>
             </div>
         </div>
-       {% endif %}
+            {% if current_user.id == 1:%}
+                <div class="container">
+                    <a class="btn btn-warning" href="{{url_for('add_project', edit=project.id)}}">Edit</a>
+                </div>
+            {%else%}
+            {%endif%}
+        {%else:%}
+        <h1>This Project doesn't exists.</h1>
+        {% endif %}
+        <div class="container back-btn">
+            <a class="btn btn-outline-danger"href="{{url_for('home')}}">Back to the start</a>
+        </div>
     {% endfor %}
-    <div class="container back-btn">
-        <a class="btn btn-outline-danger"href="/#projects-page-sec">Back to Projects</a>
-    </div>
-
 </section>
 </body>
 

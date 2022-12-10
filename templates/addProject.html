@@ -4,7 +4,7 @@
     {% if succefully_added:%}
     <div class="container">
         <h1> Succefully Added</h1>
-        <a class="btn btn-info" href="{{ url_for('add_project')}}"> Add another project</a><br>
+        <a class="btn btn-info" href="{{ url_for('add_project', edit=0)}}"> Add another project</a><br>
         <a class="btn btn-danger" href="{{ url_for('home')}}"> Back to the start</a>
     </div>
     {%else:%}

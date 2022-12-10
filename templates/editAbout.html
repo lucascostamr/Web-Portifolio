@@ -3,9 +3,11 @@
 <body>
     <div class="container">
         <h1>Edit About text:</h1>
-        {% for about in %}
-        {{ wtf.quick_form(form(text=about_text.text))}}
-        {{ ckeditor.load()| safe}}
+        <form method="post">
+            {{ ckeditor.create(value=about.text)|safe}}
+            {{ ckeditor.load()|safe}}
+            <input type="submit">
+        </form>
     </div>
     
 </body>

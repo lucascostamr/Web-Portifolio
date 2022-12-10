@@ -1,22 +1,25 @@
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     margin: 0;
-    /* overflow-y: hidden; */
+
 }
 
 /* HOME */
-.status-sign{
+.status-sign {
     display: inline-block;
     position: absolute;
     right: 50px;
     width: 11%;
 }
-.logged-in-sign{
-    color: #3EC70B;
+
+.logged-in-sign {
+    color: #3ec70b;
 }
-.logout-sign{
+
+.logout-sign {
     color: red;
 }
+
 .home-title {
     color: azure;
 }
@@ -30,7 +33,8 @@ body {
 .home-main-content {
     padding: 22.72rem 3rem;
 }
-.home-content{
+
+.home-content {
     text-align: center;
     padding-bottom: 1.5rem;
 }
@@ -40,16 +44,19 @@ body {
     border-radius: 50%;
 }
 
-.home-btn{
+.home-btn {
     padding-top: 1rem;
 }
+
 .btn-lg {
     font-size: 1.5rem;
 }
-.a-options{
+
+.a-options {
     width: 16rem;
 }
-.bar-btween{
+
+.bar-btween {
     color: #404258;
     font-size: 2rem;
     display: inline-block;
@@ -106,15 +113,10 @@ body {
     position: relative;
     background-color: #f0a500;
     z-index: 2;
-
-    /* Scrollbar */
-    /* height:1000px;
-    overflow-y: auto;
-    overflow-x: hidden; */
 }
 
 /* Scrollbar */
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     width: 0;
 }
 
@@ -188,15 +190,15 @@ body {
 .skill-text-title {
     font-size: 3rem;
     color: azure;
-
 }
+
 .card-body {
     background-color: #f0a500;
     border: none;
 }
 
 .card-title {
-    color: #3C4048;
+    color: #3c4048;
     font-size: 1.5rem;
     text-align: center;
     font-weight: bold;
@@ -209,7 +211,7 @@ body {
 }
 
 .hardskill-topic {
-    color: #00ABB3;
+    color: #00abb3;
 }
 
 .card {
@@ -247,28 +249,49 @@ body {
 /* PROJECTS */
 
 /* HOME PAGE */
-#projects-page-sec{
+#projects-page-sec {
     background-color: #181818;
     position: relative;
     z-index: 1;
 }
+
 /* Project Title */
-.project-text-title{
+.project-text-title {
     text-align: center;
     color: azure;
     font-size: 3rem;
 }
-.project-container{
+
+.project-container {
     padding: 3rem 0;
 }
 
 /* Show Projects */
-.show-project-container{
+.show-project-container {
     padding: 0.5 0 3.5rem;
 }
 
+.project-homepage-img {
+    border-radius: 30px;
+}
+
+.text-project-homepage {
+    background-color: #00abb3;
+    color: azure;
+    border-radius: 30px;
+    font-size: 1.5rem;
+    padding: 0 1rem;
+}
+
+.subdescription-project-homepage {
+    background-color: #181818;
+    display: inline-block;
+    border-radius: 30px;
+    padding: 0 1rem;
+}
+
 /* Circle */
-.yellow-circle-img{
+.yellow-circle-img {
     position: absolute;
     left: -30rem;
     bottom: 2rem;
@@ -279,16 +302,18 @@ body {
     .yellow-circle-img {
         width: 40rem;
     }
-    .show-project-container{
+
+    .show-project-container {
         padding: 6.75rem 2rem 19.5rem;
     }
 }
+
 @media (min-width: 450px) {
     .yellow-circle-img {
         width: 40rem;
     }
-    .show-project-container{
 
+    .show-project-container {
         padding: 8.25rem 2rem 14.25rem;
     }
 }
@@ -297,7 +322,8 @@ body {
     .yellow-circle-img {
         width: 45rem;
     }
-    .show-project-container{
+
+    .show-project-container {
         padding: 5.25rem 2rem 14.25rem;
     }
 }
@@ -306,192 +332,216 @@ body {
     .yellow-circle-img {
         width: 50rem;
     }
-    .show-project-container{
+
+    .show-project-container {
         padding: 2rem 0 4rem;
     }
 }
+
 @media (min-width: 993px) {
     .yellow-circle-img {
         width: 55rem;
     }
-    .show-project-container{
+
+    .show-project-container {
         padding: 0 0 3.25rem;
     }
-
 }
 
 @media (min-width: 1200px) {
     .yellow-circle-img {
         width: 65rem;
     }
-
 }
 
 /* SEPARETED PAGE */
-#body-project-page{
+#body-project-page {
     overflow-y: unset;
 }
-#project-page{
+
+#project-page {
     background-color: #181818;
     color: azure;
-    text-align: center;  
+    text-align: center;
 }
 
-.project-page-title-container{
+.project-page-title-container {
     padding: 8rem 1.5rem 0;
 }
-.project-page-container-content{
+
+.project-page-container-content {
     padding: 6rem 2rem 0;
     text-align: center;
 }
-.back-btn{
+
+.back-btn {
     text-align: left;
     padding: 3rem 3.5rem;
 }
-.project-title{
+
+.project-title {
     font-size: 3rem;
 }
-.project-description{
+
+.project-description {
     font-size: 1.75rem;
 }
-.project-description-content{
+
+.project-description-content {
     font-size: 1.25rem;
 }
-.project-image{
+
+.project-image {
     width: 80%;
-    border-radius: 10%;
+    border-radius: 30px;
 }
-.container-text{
+
+.container-text {
     text-align: left;
     width: auto;
     padding: 3rem 1.5rem;
 }
-@media(min-width: 1000px){
-    .container-text{
+
+@media (min-width: 1000px) {
+    .container-text {
         float: right;
         width: 50%;
         padding-left: 5rem;
     }
-    .project-image{
+
+    .project-image {
         width: 50%;
     }
-    .back-btn{
+
+    .back-btn {
         padding-top: 6rem;
         padding-bottom: 9.47rem;
     }
 }
-.source-btn{
+
+.source-btn {
     display: inline-block;
     padding-top: 3rem;
 }
 
 /* CONTACT */
 
-#contact-page-sec{
+#contact-page-sec {
     background-color: #f0a500;
 }
-.main-contact{
+
+.main-contact {
     text-align: center;
     color: azure;
 }
-.contact-text-title{
+
+.contact-text-title {
     padding: 4rem 0;
     font-size: 3.25rem;
 }
-.contact-form{
+
+.contact-form {
     padding: 6.95rem 1.5rem;
     width: 50%;
     text-align: left;
 }
-@media (max-width: 550px){
-    .contact-form{
+
+@media (max-width: 550px) {
+    .contact-form {
         text-align: center;
     }
 }
-.contact-sent-email{
+
+.contact-sent-email {
     padding: 15rem 1.5rem;
 }
-.contact-icons{
+
+.contact-icons {
     width: 33px;
     float: left;
 }
-.contact-container{
+
+.contact-container {
     width: 30%;
     display: inline-block;
 }
-.contact-repo-title{
+
+.contact-repo-title {
     color: #181818;
 }
-.github-icon{
+
+.github-icon {
     display: inline-block;
     position: relative;
     left: 12rem;
 }
-@media(max-width: 599.9px){
-    .github-icon{
+
+@media (max-width: 599.9px) {
+    .github-icon {
         position: static;
     }
 }
 
-@media(min-width: 600px){
-    .github-icon{
+@media (min-width: 600px) {
+    .github-icon {
         left: 0;
     }
 }
 
-@media(min-width: 750px){
-    .github-icon{
+@media (min-width: 750px) {
+    .github-icon {
         left: 2rem;
     }
 }
 
-@media(min-width: 900px){
-    .github-icon{
+@media (min-width: 900px) {
+    .github-icon {
         left: 4rem;
     }
 }
 
-@media(min-width: 1150px){
-    .github-icon{
+@media (min-width: 1150px) {
+    .github-icon {
         left: 9rem;
     }
 }
 
-@media(min-width: 1400px){
-    .github-icon{
+@media (min-width: 1400px) {
+    .github-icon {
         left: 12rem;
     }
 }
 
-@media(min-width: 1580px){
-    .github-icon{
+@media (min-width: 1580px) {
+    .github-icon {
         left: 15rem;
     }
 }
-@media(min-width: 1630px){
-    .github-icon{
+
+@media (min-width: 1630px) {
+    .github-icon {
         left: 16rem;
     }
 }
 
-@media(min-width: 1750px){
-    .github-icon{
+@media (min-width: 1750px) {
+    .github-icon {
         left: 18rem;
     }
 }
-@media(min-width: 1880px){
-    .github-icon{
+
+@media (min-width: 1880px) {
+    .github-icon {
         left: 20rem;
     }
 }
-@media(min-width: 2000px){
-    .github-icon{
+
+@media (min-width: 2000px) {
+    .github-icon {
         left: 23rem;
     }
 }
 
-
-
-.contact-main-container{
+.contact-main-container {
     padding-top: 8rem;
 }
