@@ -226,6 +226,14 @@ def add_project(edit):
         return render_template('addProject.html', succefully_added=True)
     return render_template('addProject.html', form=form, succefully_added=False, current_user=current_user)
 
+@app.route("/<int:index>", methods=("POST", "GET"))
+@admin_only
+def delete_project(index):
+    project = Projects.query.filter_by(id=index).first()
+    db.session.delete(project)
+    db.session.commit()
+
+    return redirect(url_for('home'))
 
 @app.route('/editabout', methods=['GET', 'POST'])
 @admin_only

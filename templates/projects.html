@@ -3,30 +3,27 @@
 <section id="project-page" class="project-sec">
     {% for project in all_projects: %}
         {% if project.id == index:%}
-        <div class="container project-page-title-container">
-            <h1 class="project-title">{{ project.title }}</h1>
-        </div>
-        <div class="container project-page-container-content">
-            <img src="{{ project.image_url }}" alt="project-image" class="project-image">
-            <div class="container-text">
-                <h3 class="project-description">Description</h3>
-                <p class="project-description-content">{{ project.description }}</p>
-                <span class="source-btn"><a class="btn btn-outline-info" href="{{ project.source_code_url }}">Source Code</a></span>
+            <div class="container project-page-title-container">
+                <h1 class="project-title">{{ project.title }}</h1>
             </div>
-        </div>
+            <div class="container project-page-container-content">
+                <img src="{{ project.image_url }}" alt="project-image" class="project-image">
+                <div class="container-text">
+                    <h3 class="project-description">Description</h3>
+                    <p class="project-description-content">{{ project.description }}</p>
+                    <span class="source-btn"><a class="btn btn-outline-info" href="{{ project.source_code_url }}">Source Code</a></span>
+                </div>
+            </div>
             {% if current_user.id == 1:%}
                 <div class="container">
                     <a class="btn btn-warning" href="{{url_for('add_project', edit=project.id)}}">Edit</a>
                 </div>
-            {%else%}
             {%endif%}
-        {%else:%}
-        <h1>This Project doesn't exists.</h1>
         {% endif %}
-        <div class="container back-btn">
-            <a class="btn btn-outline-danger"href="{{url_for('home')}}">Back to the start</a>
-        </div>
     {% endfor %}
+    <div class="container back-btn">
+        <a class="btn btn-outline-danger"href="{{url_for('home')}}">Back to the start</a>
+    </div>
 </section>
 </body>
 

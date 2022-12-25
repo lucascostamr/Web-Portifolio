@@ -290,6 +290,10 @@ body {
     padding: 0 1rem;
 }
 
+.edit-btn{
+    padding: 1.5rem 0;
+}
+
 /* Circle */
 .yellow-circle-img {
     position: absolute;
@@ -354,7 +358,7 @@ body {
     }
 }
 
-/* SEPARETED PAGE */
+/* ANOTHER PAGE */
 #body-project-page {
     overflow-y: unset;
 }
