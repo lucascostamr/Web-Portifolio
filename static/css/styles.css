@@ -70,6 +70,12 @@ body {
     left: -20rem;
 }
 
+@media (max-width: 780px) {
+    .subdescription-project-homepage{
+        visibility: hidden;
+        position: absolute;
+    }
+}
 @media (max-width: 549.9px) {
     .octagon-home-img {
         left: -22rem;
@@ -87,6 +93,7 @@ body {
     .octagon-home-img {
         width: 35rem;
     }
+    
 }
 
 @media (min-width: 900px) {
