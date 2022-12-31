@@ -5,11 +5,17 @@ body {
 }
 
 /* HOME */
+#google_translate_element{
+    display:inline-block;
+    position: absolute;
+    right: 0;
+    padding: 1rem 2rem;
+}
 .status-sign {
     display: inline-block;
     position: absolute;
-    right: 50px;
-    width: 11%;
+    width: 180px;
+    right: 1rem;
 }
 
 .logged-in-sign {
@@ -43,7 +49,12 @@ body {
     width: 100px;
     border-radius: 50%;
 }
-
+.edit-profile-photo{
+    background-color: #181818!important;
+    width: 1rem; 
+    display: inline-block; 
+    left:-50px;
+}
 .home-btn {
     padding-top: 1rem;
 }
@@ -61,6 +72,10 @@ body {
     font-size: 2rem;
     display: inline-block;
     padding: 0.5rem;
+}
+
+.edit-skills{
+    padding: 3rem;
 }
 
 /* octogon image */
