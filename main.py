@@ -19,11 +19,11 @@ RECAPTCHA_PUBLIC_KEY = "6LeYIbsSAAAAACRPIllxA7wvXjIE411PfdB2gt2J"
 RECAPTCHA_PRIVATE_KEY = "6LeYIbsSAAAAAJezaIq3Ft_hSTo0YtyeFG-JgRtu"
 
 # Flask
-def app():
+def create_app():
     app = Flask(__name__)
     return app
     
-app = app()
+app = create_app()
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '6LeYIbsSAAAAACRPIllx'
 
