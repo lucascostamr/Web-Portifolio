@@ -69,7 +69,7 @@ class AboutText(db.Model):
 
 # LEMBRAR DE COLOCAR AVISOS CASO OS PARAMETOS DO DB SEJAM IGUAIS
 
-# admin = User(email=USER_EMAIL, password=generate_password_hash(USER_PASSWD, method='pbkdf2:sha256', salt_length=8), profile_picture_url="")
+# admin = User(email=f"{USER_EMAIL}", password=generate_password_hash(f"{USER_PASSWD}", method='pbkdf2:sha256', salt_length=8), profile_picture_url="")
 # softskill = Skills(skill_type='softskill', skill_name='Great Comunicator,Teamwork,Work under pressure')
 # hardskill = Skills(skill_type='hardskill', skill_name='Language:Python,Java;Framework:Flask,Bootstrap,Selenium')
 # # CRIAR AS SKILLS (SOFT AND HARD) NO DB E DEPOIS TESTAR A PARTE DAS SKILLS
@@ -81,7 +81,7 @@ class AboutText(db.Model):
 #     db.session.add(hardskill)
 #     db.session.add(text)
 #     db.session.commit()
-    # pass
+#     # pass
 
 
 # FLASK APP
