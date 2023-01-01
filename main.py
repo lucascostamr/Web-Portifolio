@@ -6,6 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 from forms import *
 from sendEmail import NotificationManager
+import gunicorn
 import os
 
 # ADMIN LOGIN
@@ -18,7 +19,11 @@ RECAPTCHA_PUBLIC_KEY = "6LeYIbsSAAAAACRPIllxA7wvXjIE411PfdB2gt2J"
 RECAPTCHA_PRIVATE_KEY = "6LeYIbsSAAAAAJezaIq3Ft_hSTo0YtyeFG-JgRtu"
 
 # Flask
-app = Flask(__name__)
+def app():
+    app = Flask(__name__)
+    return app
+    
+app = app()
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '6LeYIbsSAAAAACRPIllx'
 
