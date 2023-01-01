@@ -6,6 +6,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 from forms import *
 from sendEmail import NotificationManager
+import os
+
+# ADMIN LOGIN
+USER_EMAIL= os.environ.get("USER_EMAIL")
+USER_PASSWD = os.environ.get("USER_PASSWD")
 
 # FlaskWTF
 WTF_CSRF_SECRET_KEY = '6LeYIbsSAAAAACRPIllx'
@@ -59,10 +64,10 @@ class AboutText(db.Model):
 
 # LEMBRAR DE COLOCAR AVISOS CASO OS PARAMETOS DO DB SEJAM IGUAIS
 
-# admin = User(email='lucascostamr812@gmail.com', password=generate_password_hash('147874@', method='pbkdf2:sha256', salt_length=8), profile_picture_url="")
+# admin = User(email=USER_EMAIL, password=generate_password_hash(USER_PASSWD, method='pbkdf2:sha256', salt_length=8), profile_picture_url="")
 # softskill = Skills(skill_type='softskill', skill_name='Great Comunicator,Teamwork,Work under pressure')
 # hardskill = Skills(skill_type='hardskill', skill_name='Language:Python,Java;Framework:Flask,Bootstrap,Selenium')
-# CRIAR AS SKILLS (SOFT AND HARD) NO DB E DEPOIS TESTAR A PARTE DAS SKILLS
+# # CRIAR AS SKILLS (SOFT AND HARD) NO DB E DEPOIS TESTAR A PARTE DAS SKILLS
 # text =AboutText(text= "I'm a Brazilian, who loves technology, music, games and I'm also a student of Information Systems who decided to be a Developer to offer more accessible technology to society.")
 # with app.app_context():
 #     db.create_all()
@@ -265,4 +270,4 @@ def edit_skills():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='192.168.2.179')
+    app.run(debug=True)
