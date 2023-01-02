@@ -8,7 +8,8 @@ from forms import *
 from sendEmail import NotificationManager
 import gunicorn
 import os
-
+from google.cloud.sql.connector import Connector
+import pymysql
 # ADMIN LOGIN
 USER_EMAIL= os.environ.get("USER_EMAIL")
 USER_PASSWD = os.environ.get("USER_PASSWD")
@@ -22,7 +23,13 @@ RECAPTCHA_PRIVATE_KEY = "6LeYIbsSAAAAAJezaIq3Ft_hSTo0YtyeFG-JgRtu"
 def create_app():
     app = Flask(__name__)
     return app
-    
+
+connector = Connector()
+instance_connection_name = os.environ.get("INSTACE_CONN_NAME")
+db_user = os.environ.get("DB_USER")
+db_pass = os.environ.get("DB_PASS")
+db_name = os.environ.get("DB_NAME")
+
 app = create_app()
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '6LeYIbsSAAAAACRPIllx'
@@ -30,6 +37,7 @@ app.config['SECRET_KEY'] = '6LeYIbsSAAAAACRPIllx'
 # SQLAlchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///website-data.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 
 db = SQLAlchemy(app)
 Bootstrap(app)
@@ -42,7 +50,15 @@ login_manager.init_app(app)
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-
+def getconnection() -> pymysql.connections.Connection:
+    conn: pymysql.connections.Connection = connector.connect(
+        instance_connection_name,
+        "pg8000",
+        user=db_user,
+        password=db_pass,
+        db=db_name,
+    )
+    return conn
 # SQLALCHEMY TABLES
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
