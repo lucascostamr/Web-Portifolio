@@ -9,7 +9,8 @@ from sendEmail import NotificationManager
 import gunicorn
 import os
 from google.cloud.sql.connector import Connector
-import pymysql
+import pg8000
+
 # ADMIN LOGIN
 USER_EMAIL= os.environ.get("USER_EMAIL")
 USER_PASSWD = os.environ.get("USER_PASSWD")
@@ -35,7 +36,7 @@ app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '6LeYIbsSAAAAACRPIllx'
 
 # SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///website-data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql+pg8000://"+f"{instance_connection_name}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
@@ -50,8 +51,8 @@ login_manager.init_app(app)
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-def getconnection() -> pymysql.connections.Connection:
-    conn: pymysql.connections.Connection = connector.connect(
+def getconnection() -> pg8000.dbapi.Connection:
+    conn: pg8000.dbapi.Connection = connector.connect(
         instance_connection_name,
         "pg8000",
         user=db_user,
@@ -59,6 +60,12 @@ def getconnection() -> pymysql.connections.Connection:
         db=db_name,
     )
     return conn
+
+pool = db.create_engine(
+    "postgresql+pg8000://",
+    creator=getconnection,
+)
+
 # SQLALCHEMY TABLES
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
