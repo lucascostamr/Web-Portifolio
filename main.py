@@ -115,40 +115,41 @@ def home():
     hardskills = ((Skills.query.filter_by(
         skill_type='hardskill').first()).skill_name).split(';')
 
-    if request.method == "POST":
-        new_photo = User(email=user.email, password=user.password, profile_picture_url=request.form["photoURL"])
+    try:
+        if request.method == "POST":
+            new_photo = User(email=user.email, password=user.password, profile_picture_url=request.form["photoURL"])
 
-        db.session.delete(user)
-        db.session.commit()
-        db.session.add(new_photo)
-        db.session.commit()
+            db.session.delete(user)
+            db.session.commit()
+            db.session.add(new_photo)
+            db.session.commit()
 
+    except KeyError:
+    # TO SEND EMAIL:
+        if form.validate_on_submit():
+            mail_sent = True
 
-# TO SEND EMAIL:
-    if form.validate_on_submit():
-        mail_sent = True
+            complete_email = {
+                "name": form.name.data,
+                "email": form.email.data,
+                "mailText": form.mail_text.data,
+            }
 
-        complete_email = {
-            "name": form.name.data,
-            "email": form.email.data,
-            "mailText": form.mail_text.data,
-        }
-
-        NotificationManager().send_email(complete_email["name"], complete_email["email"], complete_email["mailText"])
-        
-        return render_template(
-            'index.html',
-            form=form,
-            mail_text=form.mail_text,
-            mail_sent=mail_sent,
-            all_projects=projects,
-            current_user=current_user,
-            about_text=about_text,
-            hardskills=hardskills,
-            softskills=softskills,
-            profile_picture_url=user.profile_picture_url,
-            admin=user.id,
-        )
+            NotificationManager().send_email(complete_email["name"], complete_email["email"], complete_email["mailText"])
+            
+            return render_template(
+                'index.html',
+                form=form,
+                mail_text=form.mail_text,
+                mail_sent=mail_sent,
+                all_projects=projects,
+                current_user=current_user,
+                about_text=about_text,
+                hardskills=hardskills,
+                softskills=softskills,
+                profile_picture_url=user.profile_picture_url,
+                admin=user.id,
+            )
     return render_template(
         'index.html',
         form=form,
@@ -199,7 +200,7 @@ def logout():
 def add_project(edit):
     user = User.query.first()
     if int(edit) != 0:
-        project = Projects.query.filter_by(id=edit).first()
+        project = Projects.query.filter_by(id=int(edit)).first()
         form = AddProject(
             meta={'csrf': False},
             title=project.title,
