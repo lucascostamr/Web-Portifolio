@@ -93,8 +93,9 @@ class AboutText(db.Model):
 def admin_only(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
+        admin = User.query.first()
         try:
-            if current_user.id != 1:
+            if current_user.id != admin.id:
                 return abort(403)
         except AttributeError:
             return abort(403)
@@ -181,7 +182,7 @@ def login():
         user = User.query.filter_by(email=email).first()
         try:
             if check_password_hash(user.password, passwd):
-                login_user(user)
+                login_user(user, remember=True)
                 return redirect(url_for('home'))
         except AttributeError:
             abort(401)
