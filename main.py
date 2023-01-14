@@ -75,19 +75,18 @@ class Projects(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(250), unique=True, nullable=False)
     description = db.Column(db.Text, nullable=False)
-    sub_description = db.Column(db.String(100), nullable=False)  # RECRIAR TABLE NO DB
+    sub_description = db.Column(db.String(1000), nullable=False)  # RECRIAR TABLE NO DB
     image_url = db.Column(db.String(1000), nullable=False)
     source_code_url = db.Column(db.String(1000), unique=True, nullable=False)
 
 class Skills(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    skill_type = db.Column(db.String(10), nullable=False)
-    skill_name = db.Column(db.String(100), nullable=False)
+    skill_type = db.Column(db.String(1000), nullable=False)
+    skill_name = db.Column(db.String(1000), nullable=False)
 
 class AboutText(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(250), unique=True, nullable=False)
-
 
 # FLASK APP
 def admin_only(f):
