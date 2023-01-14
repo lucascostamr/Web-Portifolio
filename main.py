@@ -147,6 +147,7 @@ def home():
             hardskills=hardskills,
             softskills=softskills,
             profile_picture_url=user.profile_picture_url,
+            admin=user.id,
         )
     return render_template(
         'index.html',
@@ -159,17 +160,20 @@ def home():
         hardskills=hardskills,
         softskills=softskills,
         profile_picture_url=user.profile_picture_url,
+        admin=user.id,
     )
 
 
 @app.route("/projects/<id>")
 def projects(id):
+    user = User.query.first()
     projects = Projects.query.all()
-    return render_template("projects.html", current_user=current_user, all_projects=projects, index=int(id))
+    return render_template("projects.html", current_user=current_user, all_projects=projects, index=int(id), admin=user.id)
 
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
+    user = User.query.first()
     form = LoginForm(meta={'csrf': False})
     if form.validate_on_submit():
         email = form.email.data
@@ -181,7 +185,7 @@ def login():
                 return redirect(url_for('home'))
         except AttributeError:
             abort(401)
-    return render_template("login.html", form=form, current_user=current_user)
+    return render_template("login.html", form=form, current_user=current_user, admin=user.id)
 
 
 @app.route("/logout", methods=["POST", "GET"])
@@ -193,6 +197,7 @@ def logout():
 @app.route("/addproject/<edit>", methods=["POST", "GET"])
 @admin_only
 def add_project(edit):
+    user = User.query.first()
     if int(edit) != 0:
         project = Projects.query.filter_by(id=edit).first()
         form = AddProject(
@@ -222,7 +227,7 @@ def add_project(edit):
             db.session.add(new_project)
             db.session.commit()
         return render_template('addProject.html', succefully_added=True)
-    return render_template('addProject.html', form=form, succefully_added=False, current_user=current_user)
+    return render_template('addProject.html', form=form, succefully_added=False, current_user=current_user, admin=user.id)
 
 
 @app.route("/<int:index>", methods=("POST", "GET"))

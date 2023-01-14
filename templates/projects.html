@@ -15,7 +15,7 @@
                     <span class="source-btn"><a class="btn btn-outline-info" href="{{ project.source_code_url }}">Source Code</a></span>
                 </div>
             </div>
-            {% if current_user.id == 1:%}
+            {% if current_user.id == admin:%}
                 <div class="container">
                     <a class="btn btn-warning" href="{{url_for('add_project', edit=project.id)}}">Edit</a>
                 </div>
