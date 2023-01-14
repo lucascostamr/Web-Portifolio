@@ -9,14 +9,14 @@ class ContactForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     email = EmailField('Email', validators=[DataRequired()])
     mail_text = TextAreaField('Message', validators=[DataRequired()])
-    # recaptcha = RecaptchaField()
+    recaptcha = RecaptchaField()
     submit = SubmitField('Send Email')
 
 
 class LoginForm(FlaskForm):
     email = EmailField('Email', validators=[DataRequired()])
     password = PasswordField('Tolken', validators=[DataRequired()])
-    # recaptcha= RecaptchaField() # DESLIGUEI PARA TESTAR
+    recaptcha= RecaptchaField()
     submit = SubmitField('Login in')
 
 
@@ -26,7 +26,7 @@ class AddProject(FlaskForm):
     sub_description = StringField('Sub Description', validators=[DataRequired()])
     image_url = URLField('Project Image URL', validators=[DataRequired()])
     source_code_url = URLField('Source Code URL', validators=[DataRequired()])
-    # recaptcha= RecaptchaField() # DESLIGUEI PARA TESTAR
+    recaptcha= RecaptchaField()
     submit = SubmitField('Add Project')
 
 

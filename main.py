@@ -6,19 +6,20 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 from forms import *
 from sendEmail import NotificationManager
-import gunicorn
 import os
-from google.cloud.sql.connector import Connector
+from google.cloud.sql.connector import Connector, IPTypes
+import google.auth
 import pg8000
+import sqlalchemy
 
 # ADMIN LOGIN
 USER_EMAIL= os.environ.get("USER_EMAIL")
 USER_PASSWD = os.environ.get("USER_PASSWD")
 
 # FlaskWTF
-WTF_CSRF_SECRET_KEY = '6LeYIbsSAAAAACRPIllx'
-RECAPTCHA_PUBLIC_KEY = "6LeYIbsSAAAAACRPIllxA7wvXjIE411PfdB2gt2J"
-RECAPTCHA_PRIVATE_KEY = "6LeYIbsSAAAAAJezaIq3Ft_hSTo0YtyeFG-JgRtu"
+WTF_CSRF_SECRET_KEY = os.environ.get('WTF_KEY')
+RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
 
 # Flask
 def create_app():
@@ -26,17 +27,28 @@ def create_app():
     return app
 
 connector = Connector()
-instance_connection_name = os.environ.get("INSTACE_CONN_NAME")
-db_user = os.environ.get("DB_USER")
-db_pass = os.environ.get("DB_PASS")
-db_name = os.environ.get("DB_NAME")
+
+
+def getconnection():
+    with Connector() as connector:
+        conn = connector.connect(
+            os.environ.get('INSTANCE_CONNECTION_NAME'),
+            'pg8000',
+            user=os.environ.get('DB_USER'),
+            password=os.environ.get('DB_PASS'),
+            db=os.environ.get('DB_NAME'),
+            ip_type= IPTypes.PUBLIC
+        )
+        return conn
+
 
 app = create_app()
 app.config.from_object(__name__)
-app.config['SECRET_KEY'] = '6LeYIbsSAAAAACRPIllx'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 # SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql+pg8000://"+f"{instance_connection_name}"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql+pg8000://"
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {"creator": getconnection}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
@@ -51,20 +63,6 @@ login_manager.init_app(app)
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-def getconnection() -> pg8000.dbapi.Connection:
-    conn: pg8000.dbapi.Connection = connector.connect(
-        instance_connection_name,
-        "pg8000",
-        user=db_user,
-        password=db_pass,
-        db=db_name,
-    )
-    return conn
-
-pool = db.create_engine(
-    "postgresql+pg8000://",
-    creator=getconnection,
-)
 
 # SQLALCHEMY TABLES
 class User(UserMixin, db.Model):
@@ -90,22 +88,6 @@ class AboutText(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(250), unique=True, nullable=False)
 
-# LEMBRAR DE COLOCAR AVISOS CASO OS PARAMETOS DO DB SEJAM IGUAIS
-
-# admin = User(email=f"{USER_EMAIL}", password=generate_password_hash(f"{USER_PASSWD}", method='pbkdf2:sha256', salt_length=8), profile_picture_url="")
-# softskill = Skills(skill_type='softskill', skill_name='Great Comunicator,Teamwork,Work under pressure')
-# hardskill = Skills(skill_type='hardskill', skill_name='Language:Python,Java;Framework:Flask,Bootstrap,Selenium')
-# # CRIAR AS SKILLS (SOFT AND HARD) NO DB E DEPOIS TESTAR A PARTE DAS SKILLS
-# text =AboutText(text= "I'm a Brazilian, who loves technology, music, games and I'm also a student of Information Systems who decided to be a Developer to offer more accessible technology to society.")
-# with app.app_context():
-#     db.create_all()
-#     db.session.add(admin)
-#     db.session.add(softskill)
-#     db.session.add(hardskill)
-#     db.session.add(text)
-#     db.session.commit()
-#     # pass
-
 
 # FLASK APP
 def admin_only(f):
@@ -126,8 +108,8 @@ def home():
     projects = Projects.query.all()
     form = ContactForm(meta={'csrf': False})
     about_text = AboutText.query.all()
-    user = User.query.filter_by(id=1).first()
-
+    user = User.query.first()
+    
     softskills = ((Skills.query.filter_by(
         skill_type='softskill').first()).skill_name).split(',')
     hardskills = ((Skills.query.filter_by(
@@ -298,4 +280,4 @@ def edit_skills():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get("PORT", 8080)))
